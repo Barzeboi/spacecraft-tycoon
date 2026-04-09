@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://b7owrufkii4nj"]
+
+[ext_resource type="Texture2D" uid="uid://bh5hwc4s5tndw" path="res://icon.svg" id="1_36efa"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dqkwb"]
+size = Vector2(128, 128)
+
+[node name="ShipFuelComponent" type="StaticBody2D" unique_id=349747958]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1267663735]
+texture = ExtResource("1_36efa")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2121744489]
+shape = SubResource("RectangleShape2D_dqkwb")
+
+[node name="Marker2D" type="Marker2D" parent="." unique_id=2042169368]
+position = Vector2(-80, 0)
+
+[node name="Marker2D2" type="Marker2D" parent="." unique_id=1663124452]
+position = Vector2(80, 0)
+
+[node name="Marker2D3" type="Marker2D" parent="." unique_id=1276973259]
+position = Vector2(0, 80)
+
+[node name="Marker2D4" type="Marker2D" parent="." unique_id=54556201]
+position = Vector2(0, -80)

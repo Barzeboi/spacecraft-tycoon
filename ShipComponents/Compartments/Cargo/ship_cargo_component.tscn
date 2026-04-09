@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://cfvd46ircxk2s"]
+
+[ext_resource type="Texture2D" uid="uid://bh5hwc4s5tndw" path="res://icon.svg" id="1_143ad"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pb6av"]
+size = Vector2(128, 128)
+
+[node name="ShipCargoComponent" type="StaticBody2D" unique_id=2012954554]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=427042306]
+texture = ExtResource("1_143ad")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1569805787]
+shape = SubResource("RectangleShape2D_pb6av")
+
+[node name="Marker2D" type="Marker2D" parent="." unique_id=850984708]
+position = Vector2(80, 0)
+
+[node name="Marker2D2" type="Marker2D" parent="." unique_id=799634620]
+position = Vector2(-80, 0)
+
+[node name="Marker2D3" type="Marker2D" parent="." unique_id=246294747]
+position = Vector2(0, 80)
+
+[node name="Marker2D4" type="Marker2D" parent="." unique_id=116691397]
+position = Vector2(0, -80)
