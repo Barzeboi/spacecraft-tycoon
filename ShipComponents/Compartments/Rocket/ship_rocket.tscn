@@ -5,6 +5,12 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jroa6"]
 size = Vector2(128, 130)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_12ykr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fl621"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u0u7h"]
+
 [node name="ShipRocket" type="StaticBody2D" unique_id=830745765]
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=97909732]
@@ -13,11 +19,20 @@ texture = ExtResource("1_12ykr")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=531938894]
 shape = SubResource("RectangleShape2D_jroa6")
 
-[node name="Marker2D2" type="Marker2D" parent="." unique_id=2114396240]
-position = Vector2(-80, 0)
+[node name="Marker2D2" type="Area2D" parent="." unique_id=2037707294]
+position = Vector2(-128, 0)
 
-[node name="Marker2D3" type="Marker2D" parent="." unique_id=1781888493]
-position = Vector2(0, -80)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Marker2D2" unique_id=376959469]
+shape = SubResource("RectangleShape2D_12ykr")
 
-[node name="Marker2D4" type="Marker2D" parent="." unique_id=1525560429]
-position = Vector2(0, 80)
+[node name="Marker2D3" type="Area2D" parent="." unique_id=2082231256]
+position = Vector2(0, -128)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Marker2D3" unique_id=951939089]
+shape = SubResource("RectangleShape2D_fl621")
+
+[node name="Marker2D4" type="Area2D" parent="." unique_id=1098515851]
+position = Vector2(0, 128)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Marker2D4" unique_id=1626072049]
+shape = SubResource("RectangleShape2D_u0u7h")

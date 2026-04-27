@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://c55e2sdgd3m58"]
+
+[ext_resource type="Script" uid="uid://b78d25cd6anfc" path="res://Scripts/UI/hud.gd" id="1_sprlj"]
+[ext_resource type="PackedScene" uid="uid://ckup8pxrye2fs" path="res://Scenes/UI/cockpit_button.tscn" id="2_ny26j"]
+[ext_resource type="Script" uid="uid://fn7v6pimbor7" path="res://Scripts/UI/componentbutton.gd" id="3_fdl0h"]
+[ext_resource type="PackedScene" uid="uid://b2qt5gabknokb" path="res://ShipComponents/Cockpits/ship_cockpit.tscn" id="4_ux5h0"]
+[ext_resource type="Script" uid="uid://cvqgbkw74v6oo" path="res://component_manager.gd" id="5_mqf2c"]
+[ext_resource type="Texture2D" uid="uid://bh5hwc4s5tndw" path="res://icon.svg" id="6_7wqu8"]
+
+[sub_resource type="Resource" id="Resource_fqivn"]
+script = ExtResource("5_mqf2c")
+component = ExtResource("4_ux5h0")
+visual = ExtResource("6_7wqu8")
+price = 62000.0
+metadata/_custom_type_script = "uid://cvqgbkw74v6oo"
+
+[node name="HUD" type="CanvasLayer" unique_id=2017374131]
+script = ExtResource("1_sprlj")
+
+[node name="TabContainer" type="TabContainer" parent="." unique_id=800234328]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -236.0
+grow_horizontal = 2
+grow_vertical = 0
+current_tab = 0
+
+[node name="Cockpits" type="TabBar" parent="TabContainer" unique_id=1324475353]
+layout_mode = 2
+max_tab_width = 5
+metadata/_tab_index = 0
+
+[node name="Cockpit_Button" parent="TabContainer/Cockpits" unique_id=1077845853 instance=ExtResource("2_ny26j")]
+layout_mode = 1
+offset_left = -568.0
+offset_top = -91.5
+offset_right = -403.0
+offset_bottom = 90.5
+script = ExtResource("3_fdl0h")
+component_manager = SubResource("Resource_fqivn")
+
+[node name="Cargo" type="TabBar" parent="TabContainer" unique_id=1734817318]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="Fuel" type="TabBar" parent="TabContainer" unique_id=28413374]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 2
+
+[node name="Rocket" type="TabBar" parent="TabContainer" unique_id=2047733724]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 3

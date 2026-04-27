@@ -5,6 +5,14 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pb6av"]
 size = Vector2(128, 128)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_143ad"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_imrbx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vn72v"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l183t"]
+
 [node name="ShipCargoComponent" type="StaticBody2D" unique_id=2012954554]
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=427042306]
@@ -13,14 +21,26 @@ texture = ExtResource("1_143ad")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1569805787]
 shape = SubResource("RectangleShape2D_pb6av")
 
-[node name="Marker2D" type="Marker2D" parent="." unique_id=850984708]
-position = Vector2(80, 0)
+[node name="Marker2D" type="Area2D" parent="." unique_id=1193147277]
+position = Vector2(128, 0)
 
-[node name="Marker2D2" type="Marker2D" parent="." unique_id=799634620]
-position = Vector2(-80, 0)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Marker2D" unique_id=1722742483]
+shape = SubResource("RectangleShape2D_143ad")
 
-[node name="Marker2D3" type="Marker2D" parent="." unique_id=246294747]
-position = Vector2(0, 80)
+[node name="Marker2D2" type="Area2D" parent="." unique_id=324990999]
+position = Vector2(-128, 0)
 
-[node name="Marker2D4" type="Marker2D" parent="." unique_id=116691397]
-position = Vector2(0, -80)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Marker2D2" unique_id=575004723]
+shape = SubResource("RectangleShape2D_imrbx")
+
+[node name="Marker2D3" type="Area2D" parent="." unique_id=1200237296]
+position = Vector2(0, 128)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Marker2D3" unique_id=1983342828]
+shape = SubResource("RectangleShape2D_vn72v")
+
+[node name="Marker2D4" type="Area2D" parent="." unique_id=196054246]
+position = Vector2(0, -128)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Marker2D4" unique_id=1572654215]
+shape = SubResource("RectangleShape2D_l183t")

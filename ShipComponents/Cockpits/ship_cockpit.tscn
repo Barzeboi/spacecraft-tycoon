@@ -5,6 +5,8 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t78wd"]
 size = Vector2(130, 130)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0j5mt"]
+
 [node name="ShipCockpit" type="CharacterBody2D" unique_id=1323647158]
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=413880729]
@@ -14,5 +16,8 @@ texture = ExtResource("1_0j5mt")
 position = Vector2(0, -1)
 shape = SubResource("RectangleShape2D_t78wd")
 
-[node name="Marker2D" type="Marker2D" parent="." unique_id=290831361]
-position = Vector2(80, 0)
+[node name="Marker2D" type="Area2D" parent="." unique_id=1176550180]
+position = Vector2(128, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Marker2D" unique_id=865425044]
+shape = SubResource("RectangleShape2D_0j5mt")
