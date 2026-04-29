@@ -14,6 +14,10 @@ config/name="Spacecraft Tycoon"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+EventCall="*uid://bwdrar4shsqm0"
+
 [physics]
 
 3d/physics_engine="Jolt Physics"

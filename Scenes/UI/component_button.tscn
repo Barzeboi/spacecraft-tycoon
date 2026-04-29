@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://ckup8pxrye2fs"]
 
-[ext_resource type="Texture2D" uid="uid://bh5hwc4s5tndw" path="res://icon.svg" id="1_7s1u7"]
+[ext_resource type="Script" uid="uid://fn7v6pimbor7" path="res://Scripts/UI/componentbutton.gd" id="2_pkyea"]
 
-[node name="Cockpit_Button" type="Button" unique_id=1077845853]
+[node name="component_button" type="Button" unique_id=1077845853]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -14,7 +14,8 @@ offset_right = 97.0
 offset_bottom = 91.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Cockpit"
-icon = ExtResource("1_7s1u7")
 icon_alignment = 1
 vertical_icon_alignment = 0
+script = ExtResource("2_pkyea")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

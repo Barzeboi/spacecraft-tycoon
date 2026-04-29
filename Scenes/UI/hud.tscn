@@ -1,17 +1,67 @@
 [gd_scene format=3 uid="uid://c55e2sdgd3m58"]
 
 [ext_resource type="Script" uid="uid://b78d25cd6anfc" path="res://Scripts/UI/hud.gd" id="1_sprlj"]
-[ext_resource type="PackedScene" uid="uid://ckup8pxrye2fs" path="res://Scenes/UI/cockpit_button.tscn" id="2_ny26j"]
-[ext_resource type="Script" uid="uid://fn7v6pimbor7" path="res://Scripts/UI/componentbutton.gd" id="3_fdl0h"]
-[ext_resource type="PackedScene" uid="uid://b2qt5gabknokb" path="res://ShipComponents/Cockpits/ship_cockpit.tscn" id="4_ux5h0"]
+[ext_resource type="PackedScene" uid="uid://ckup8pxrye2fs" path="res://Scenes/UI/component_button.tscn" id="2_ny26j"]
 [ext_resource type="Script" uid="uid://cvqgbkw74v6oo" path="res://component_manager.gd" id="5_mqf2c"]
+[ext_resource type="PackedScene" uid="uid://cfvd46ircxk2s" path="res://ShipComponents/Compartments/Cargo/ship_cargo_component.tscn" id="5_vsu76"]
 [ext_resource type="Texture2D" uid="uid://bh5hwc4s5tndw" path="res://icon.svg" id="6_7wqu8"]
+[ext_resource type="PackedScene" uid="uid://b7owrufkii4nj" path="res://ShipComponents/Compartments/Fuel/ship_fuel_component.tscn" id="6_mqf2c"]
+[ext_resource type="PackedScene" uid="uid://djiipks7iuwb5" path="res://ShipComponents/Compartments/Rocket/ship_rocket.tscn" id="7_7wqu8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t78wd"]
+size = Vector2(130, 130)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0j5mt"]
+
+[sub_resource type="PackedScene" id="PackedScene_ux5h0"]
+_bundled = {
+"conn_count": 0,
+"conns": PackedInt32Array(),
+"editable_instances": [],
+"id_paths": [PackedInt32Array(), PackedInt32Array(), PackedInt32Array(), PackedInt32Array()],
+"names": PackedStringArray("ShipCockpit", "CharacterBody2D", "Sprite2D", "Sprite2D", "texture", "CollisionShape2D", "CollisionShape2D", "position", "shape", "Marker2D", "Area2D", "position", "CollisionShape2D", "CollisionShape2D", "shape"),
+"node_count": 5,
+"node_ids": PackedInt32Array(1323647158, 413880729, 61621440, 1176550180, 865425044),
+"node_paths": [NodePath("."), NodePath("."), NodePath("."), NodePath("./Marker2D")],
+"nodes": PackedInt32Array(-1, -1, 1, 0, -1, 0, 0, 1073741824, 0, 3, 2, -1, 1, 4, 0, 0, 1073741825, 0, 6, 5, -1, 2, 7, 1, 8, 2, 0, 1073741826, 0, 10, 9, -1, 1, 11, 3, 0, 1073741827, 0, 13, 12, -1, 1, 14, 4, 0),
+"variants": [ExtResource("6_7wqu8"), Vector2(0, -1), SubResource("RectangleShape2D_t78wd"), Vector2(128, 0), SubResource("RectangleShape2D_0j5mt")],
+"version": 3
+}
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_mqf2c"]
+load_path = "res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex"
 
 [sub_resource type="Resource" id="Resource_fqivn"]
 script = ExtResource("5_mqf2c")
-component = ExtResource("4_ux5h0")
-visual = ExtResource("6_7wqu8")
+component = SubResource("PackedScene_ux5h0")
+visual = SubResource("CompressedTexture2D_mqf2c")
 price = 62000.0
+name = &"Cockpit_1"
+metadata/_custom_type_script = "uid://cvqgbkw74v6oo"
+
+[sub_resource type="Resource" id="Resource_7wqu8"]
+script = ExtResource("5_mqf2c")
+component = ExtResource("5_vsu76")
+visual = ExtResource("6_7wqu8")
+price = 24000.0
+name = &"Cargo_1"
+metadata/_custom_type_script = "uid://cvqgbkw74v6oo"
+
+[sub_resource type="Resource" id="Resource_qdh5o"]
+script = ExtResource("5_mqf2c")
+component = ExtResource("6_mqf2c")
+visual = ExtResource("6_7wqu8")
+price = 18000.0
+name = &"Fuel_1"
+metadata/_custom_type_script = "uid://cvqgbkw74v6oo"
+
+[sub_resource type="Resource" id="Resource_cna6x"]
+script = ExtResource("5_mqf2c")
+component = ExtResource("7_7wqu8")
+visual = ExtResource("6_7wqu8")
+price = 30000.0
+name = &"Rocket_1"
+number = 4
 metadata/_custom_type_script = "uid://cvqgbkw74v6oo"
 
 [node name="HUD" type="CanvasLayer" unique_id=2017374131]
@@ -25,20 +75,20 @@ anchor_bottom = 1.0
 offset_top = -236.0
 grow_horizontal = 2
 grow_vertical = 0
-current_tab = 0
+current_tab = 3
 
 [node name="Cockpits" type="TabBar" parent="TabContainer" unique_id=1324475353]
+visible = false
 layout_mode = 2
 max_tab_width = 5
 metadata/_tab_index = 0
 
-[node name="Cockpit_Button" parent="TabContainer/Cockpits" unique_id=1077845853 instance=ExtResource("2_ny26j")]
+[node name="Cockpit1_Button" parent="TabContainer/Cockpits" unique_id=1077845853 instance=ExtResource("2_ny26j")]
 layout_mode = 1
 offset_left = -568.0
 offset_top = -91.5
 offset_right = -403.0
 offset_bottom = 90.5
-script = ExtResource("3_fdl0h")
 component_manager = SubResource("Resource_fqivn")
 
 [node name="Cargo" type="TabBar" parent="TabContainer" unique_id=1734817318]
@@ -46,12 +96,40 @@ visible = false
 layout_mode = 2
 metadata/_tab_index = 1
 
+[node name="Cargo1_Button" parent="TabContainer/Cargo" unique_id=1717111672 instance=ExtResource("2_ny26j")]
+layout_mode = 1
+offset_left = -568.0
+offset_top = -91.5
+offset_right = -403.0
+offset_bottom = 90.5
+component_manager = SubResource("Resource_7wqu8")
+
 [node name="Fuel" type="TabBar" parent="TabContainer" unique_id=28413374]
 visible = false
 layout_mode = 2
 metadata/_tab_index = 2
 
+[node name="Fuel1_Button" parent="TabContainer/Fuel" unique_id=1431229676 instance=ExtResource("2_ny26j")]
+layout_mode = 1
+offset_left = -568.0
+offset_top = -91.5
+offset_right = -403.0
+offset_bottom = 90.5
+component_manager = SubResource("Resource_qdh5o")
+
 [node name="Rocket" type="TabBar" parent="TabContainer" unique_id=2047733724]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 3
+
+[node name="Rocket1_Button" parent="TabContainer/Rocket" unique_id=257483433 instance=ExtResource("2_ny26j")]
+layout_mode = 1
+offset_left = -568.0
+offset_top = -91.5
+offset_right = -403.0
+offset_bottom = 90.5
+component_manager = SubResource("Resource_cna6x")
+
+[node name="Label" type="Label" parent="." unique_id=1539931722]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Current Component:"
