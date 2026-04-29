@@ -45,6 +45,7 @@ component = ExtResource("5_vsu76")
 visual = ExtResource("6_7wqu8")
 price = 24000.0
 name = &"Cargo_1"
+number = 2
 metadata/_custom_type_script = "uid://cvqgbkw74v6oo"
 
 [sub_resource type="Resource" id="Resource_qdh5o"]
@@ -53,6 +54,7 @@ component = ExtResource("6_mqf2c")
 visual = ExtResource("6_7wqu8")
 price = 18000.0
 name = &"Fuel_1"
+number = 3
 metadata/_custom_type_script = "uid://cvqgbkw74v6oo"
 
 [sub_resource type="Resource" id="Resource_cna6x"]
