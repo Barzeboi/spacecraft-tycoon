@@ -1,3 +1,10 @@
 [gd_scene format=3 uid="uid://cme3btxgd0kgm"]
 
+[ext_resource type="PackedScene" uid="uid://c55e2sdgd3m58" path="res://Scenes/UI/hud.tscn" id="1_x87qo"]
+
 [node name="GameScene" type="Node2D" unique_id=1113924903]
+
+[node name="HUD" parent="." unique_id=2017374131 instance=ExtResource("1_x87qo")]
+
+[node name="CockpitMarker" type="Marker2D" parent="." unique_id=1841037908]
+position = Vector2(148, 185)

@@ -1,3 +1,3 @@
 extends Node
 
-signal pressed(component_num)
+signal pressed(component_num, component_inst)

@@ -37,6 +37,7 @@ component = SubResource("PackedScene_ux5h0")
 visual = SubResource("CompressedTexture2D_mqf2c")
 price = 62000.0
 name = &"Cockpit_1"
+number = 1
 metadata/_custom_type_script = "uid://cvqgbkw74v6oo"
 
 [sub_resource type="Resource" id="Resource_7wqu8"]

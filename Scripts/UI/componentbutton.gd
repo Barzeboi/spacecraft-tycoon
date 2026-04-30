@@ -14,4 +14,4 @@ func _process(delta: float) -> void:
 
 
 func _on_pressed() -> void:
-	EventCall.emit_signal("pressed", component_manager.number)
+	EventCall.emit_signal("pressed", component_manager.number, component_manager.component)
