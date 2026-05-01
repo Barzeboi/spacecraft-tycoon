@@ -7,4 +7,4 @@
 [node name="HUD" parent="." unique_id=2017374131 instance=ExtResource("1_x87qo")]
 
 [node name="CockpitMarker" type="Marker2D" parent="." unique_id=1841037908]
-position = Vector2(148, 185)
+position = Vector2(150, 250)
