@@ -1,15 +1,17 @@
 [gd_scene format=3 uid="uid://cfvd46ircxk2s"]
 
 [ext_resource type="Texture2D" uid="uid://bh5hwc4s5tndw" path="res://icon.svg" id="1_143ad"]
+[ext_resource type="Script" uid="uid://fkgwxl444cuk" path="res://Scripts/attach_script.gd" id="2_imrbx"]
+[ext_resource type="Texture2D" uid="uid://ssdd5gsaavc4" path="res://Assets/Misc/marker.png" id="2_pb6av"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pb6av"]
 size = Vector2(128, 128)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_143ad"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_imrbx"]
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vn72v"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_imrbx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l183t"]
 
@@ -23,24 +25,34 @@ shape = SubResource("RectangleShape2D_pb6av")
 
 [node name="Marker2D" type="Area2D" parent="." unique_id=1193147277]
 position = Vector2(128, 0)
+script = ExtResource("2_imrbx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Marker2D" unique_id=1722742483]
 shape = SubResource("RectangleShape2D_143ad")
 
-[node name="Marker2D2" type="Area2D" parent="." unique_id=324990999]
-position = Vector2(-128, 0)
+[node name="Sprite2D" type="Sprite2D" parent="Marker2D/CollisionShape2D" unique_id=1767880176]
+texture = ExtResource("2_pb6av")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Marker2D2" unique_id=575004723]
-shape = SubResource("RectangleShape2D_imrbx")
-
-[node name="Marker2D3" type="Area2D" parent="." unique_id=1200237296]
-position = Vector2(0, 128)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Marker2D3" unique_id=1983342828]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Marker2D" unique_id=1983342828]
+position = Vector2(-128, 128)
 shape = SubResource("RectangleShape2D_vn72v")
 
-[node name="Marker2D4" type="Area2D" parent="." unique_id=196054246]
-position = Vector2(0, -128)
+[node name="Sprite2D" type="Sprite2D" parent="Marker2D/CollisionShape2D2" unique_id=398502396]
+texture = ExtResource("2_pb6av")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Marker2D4" unique_id=1572654215]
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Marker2D" unique_id=575004723]
+position = Vector2(-256, 0)
+shape = SubResource("RectangleShape2D_imrbx")
+
+[node name="Sprite2D" type="Sprite2D" parent="Marker2D/CollisionShape2D3" unique_id=394816757]
+texture = ExtResource("2_pb6av")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Marker2D" unique_id=1572654215]
+position = Vector2(-128, -128)
 shape = SubResource("RectangleShape2D_l183t")
+
+[node name="Sprite2D" type="Sprite2D" parent="Marker2D/CollisionShape2D4" unique_id=1149675299]
+texture = ExtResource("2_pb6av")
+
+[connection signal="mouse_entered" from="Marker2D" to="Marker2D" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Marker2D" to="Marker2D" method="_on_mouse_exited"]

@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://b2qt5gabknokb"]
 
 [ext_resource type="Texture2D" uid="uid://bh5hwc4s5tndw" path="res://icon.svg" id="1_0j5mt"]
+[ext_resource type="Script" uid="uid://fkgwxl444cuk" path="res://Scripts/attach_script.gd" id="2_ps28p"]
+[ext_resource type="Texture2D" uid="uid://ssdd5gsaavc4" path="res://Assets/Misc/marker.png" id="2_t78wd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t78wd"]
 size = Vector2(130, 130)
@@ -18,6 +20,13 @@ shape = SubResource("RectangleShape2D_t78wd")
 
 [node name="Marker2D" type="Area2D" parent="." unique_id=1176550180]
 position = Vector2(128, 0)
+script = ExtResource("2_ps28p")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Marker2D" unique_id=865425044]
 shape = SubResource("RectangleShape2D_0j5mt")
+
+[node name="Sprite2D" type="Sprite2D" parent="Marker2D" unique_id=723140943]
+texture = ExtResource("2_t78wd")
+
+[connection signal="mouse_entered" from="Marker2D" to="Marker2D" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Marker2D" to="Marker2D" method="_on_mouse_exited"]
