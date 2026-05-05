@@ -14,3 +14,10 @@ export_credentials.cfg
 .mono/
 data_*/
 mono_crash.*.json
+/addons
+ridiculous.png
+ridiculous.png.import
+readme-example.gif
+ridiculous.svg.import
+ridiculous.svg
+default_env.tres
