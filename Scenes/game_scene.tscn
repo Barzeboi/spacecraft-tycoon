@@ -8,6 +8,3 @@
 
 [node name="CockpitMarker" type="Marker2D" parent="." unique_id=1841037908]
 position = Vector2(150, 250)
-
-[node name="Camera2D" type="Camera2D" parent="." unique_id=1391867055]
-position = Vector2(192, 319)
