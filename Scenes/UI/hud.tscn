@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://b78d25cd6anfc" path="res://Scripts/UI/hud.gd" id="1_sprlj"]
 [ext_resource type="PackedScene" uid="uid://ckup8pxrye2fs" path="res://Scenes/UI/component_button.tscn" id="2_ny26j"]
 [ext_resource type="PackedScene" uid="uid://b2qt5gabknokb" path="res://ShipComponents/Cockpits/ship_cockpit.tscn" id="3_7wqu8"]
-[ext_resource type="Script" uid="uid://cvqgbkw74v6oo" path="res://component_manager.gd" id="5_mqf2c"]
+[ext_resource type="Script" uid="uid://cvqgbkw74v6oo" path="res://Scripts/Resources/UI/component_manager.gd" id="5_mqf2c"]
 [ext_resource type="PackedScene" uid="uid://cfvd46ircxk2s" path="res://ShipComponents/Compartments/Cargo/ship_cargo_component.tscn" id="5_vsu76"]
 [ext_resource type="Texture2D" uid="uid://bh5hwc4s5tndw" path="res://icon.svg" id="6_7wqu8"]
 [ext_resource type="PackedScene" uid="uid://b7owrufkii4nj" path="res://ShipComponents/Compartments/Fuel/ship_fuel_component.tscn" id="6_mqf2c"]
