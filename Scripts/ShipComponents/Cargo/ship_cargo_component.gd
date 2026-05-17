@@ -2,8 +2,5 @@ extends ShipComponent
 
 
 
-
-
 func _ready() -> void:
-	print("initialized")
 	EventCall.emit_signal('stats_call', component_stats)

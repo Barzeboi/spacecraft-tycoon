@@ -8,10 +8,19 @@ var cockpit_marker = Vector2(150.0,250.0)
 var placer_active: bool = false
 var is_placeable: bool
 var placing_position: Vector2
+@onready var weight: Label = $PanelContainer/VBoxContainer/HBoxContainer/weight
+@onready var weight_pb : ProgressBar = $PanelContainer/VBoxContainer/HBoxContainer2/weight_pb
+@onready var quality: Label = $PanelContainer/VBoxContainer/HBoxContainer3/quailty
+@onready var quality_pb: ProgressBar = $PanelContainer/VBoxContainer/HBoxContainer4/quality_pb
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	EventCall.connect("pressed", _button_pressed)
 	EventCall.connect('placement',_place_component)
+	EventCall.connect('script_changed',_stats_display)
+	
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -59,3 +68,10 @@ func _place_component(comp_inst:PackedScene,plce: bool, position: Vector2):
 		var place = comp_inst.instantiate()
 		place.global_position = position
 		owner.add_child(place)
+		
+func _stats_display(stats: StatsCalculation):
+	print("called")
+	weight_pb.value += stats.weight
+	quality_pb.value = stats.quality
+	
+	

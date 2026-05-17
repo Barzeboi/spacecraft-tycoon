@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://bh5hwc4s5tndw" path="res://icon.svg" id="6_7wqu8"]
 [ext_resource type="PackedScene" uid="uid://b7owrufkii4nj" path="res://ShipComponents/Compartments/Fuel/ship_fuel_component.tscn" id="6_mqf2c"]
 [ext_resource type="PackedScene" uid="uid://djiipks7iuwb5" path="res://ShipComponents/Compartments/Rocket/ship_rocket.tscn" id="7_7wqu8"]
+[ext_resource type="Script" uid="uid://cnwt6o23swxhx" path="res://stats_calculation.gd" id="9_fqivn"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_mqf2c"]
 load_path = "res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex"
@@ -68,10 +69,12 @@ metadata/_tab_index = 0
 
 [node name="Cockpit1_Button" parent="TabContainer/Cockpits" unique_id=1077845853 instance=ExtResource("2_ny26j")]
 layout_mode = 1
-offset_left = -568.0
-offset_top = -91.5
-offset_right = -403.0
-offset_bottom = 90.5
+anchors_preset = 4
+anchor_left = 0.0
+anchor_right = 0.0
+offset_left = 0.0
+offset_right = 156.936
+grow_horizontal = 1
 component_manager = SubResource("Resource_fqivn")
 
 [node name="Cargo" type="TabBar" parent="TabContainer" unique_id=1734817318]
@@ -81,10 +84,12 @@ metadata/_tab_index = 1
 
 [node name="Cargo1_Button" parent="TabContainer/Cargo" unique_id=1717111672 instance=ExtResource("2_ny26j")]
 layout_mode = 1
-offset_left = -568.0
-offset_top = -91.5
-offset_right = -403.0
-offset_bottom = 90.5
+anchors_preset = 4
+anchor_left = 0.0
+anchor_right = 0.0
+offset_left = 0.0
+offset_right = 165.0
+grow_horizontal = 1
 component_manager = SubResource("Resource_7wqu8")
 
 [node name="Fuel" type="TabBar" parent="TabContainer" unique_id=28413374]
@@ -94,10 +99,12 @@ metadata/_tab_index = 2
 
 [node name="Fuel1_Button" parent="TabContainer/Fuel" unique_id=1431229676 instance=ExtResource("2_ny26j")]
 layout_mode = 1
-offset_left = -568.0
-offset_top = -91.5
-offset_right = -403.0
-offset_bottom = 90.5
+anchors_preset = 4
+anchor_left = 0.0
+anchor_right = 0.0
+offset_left = 0.0
+offset_right = 165.0
+grow_horizontal = 1
 component_manager = SubResource("Resource_qdh5o")
 
 [node name="Rocket" type="TabBar" parent="TabContainer" unique_id=2047733724]
@@ -107,13 +114,68 @@ metadata/_tab_index = 3
 
 [node name="Rocket1_Button" parent="TabContainer/Rocket" unique_id=257483433 instance=ExtResource("2_ny26j")]
 layout_mode = 1
-offset_left = -568.0
-offset_top = -91.5
-offset_right = -403.0
-offset_bottom = 90.5
+anchors_preset = 4
+anchor_left = 0.0
+anchor_right = 0.0
+offset_left = 0.0
+offset_right = 165.0
+grow_horizontal = 1
 component_manager = SubResource("Resource_cna6x")
 
 [node name="Label" type="Label" parent="." unique_id=1539931722]
 offset_right = 40.0
 offset_bottom = 23.0
 text = "Current Component:"
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=762691497]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -455.0
+offset_bottom = 321.0
+grow_horizontal = 0
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="PanelContainer" unique_id=1671091860]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/HBoxContainer5" unique_id=729581449]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/HBoxContainer5/VBoxContainer" unique_id=1826981164]
+layout_mode = 2
+
+[node name="weight" type="Label" parent="PanelContainer/HBoxContainer5/VBoxContainer/HBoxContainer" unique_id=763128520]
+layout_mode = 2
+text = "weight"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/HBoxContainer5/VBoxContainer" unique_id=1584071295]
+layout_mode = 2
+
+[node name="weight_pb" type="ProgressBar" parent="PanelContainer/HBoxContainer5/VBoxContainer/HBoxContainer2" unique_id=1260133467]
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 100000.0
+show_percentage = false
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="PanelContainer/HBoxContainer5/VBoxContainer" unique_id=1701436546]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="quailty" type="Label" parent="PanelContainer/HBoxContainer5/VBoxContainer/HBoxContainer3" unique_id=187352426]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "quality"
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="PanelContainer/HBoxContainer5/VBoxContainer" unique_id=49425583]
+layout_mode = 2
+
+[node name="quality_pb" type="ProgressBar" parent="PanelContainer/HBoxContainer5/VBoxContainer/HBoxContainer4" unique_id=1819766265]
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 10.0
+show_percentage = false
+
+[node name="StatsCalculation" type="Node" parent="." unique_id=1195349802]
+script = ExtResource("9_fqivn")

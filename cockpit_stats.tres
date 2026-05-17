@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ComponentStats" format=3 uid="uid://bptj1wtg0r0f4"]
+
+[ext_resource type="Script" uid="uid://drnyl6esifnyw" path="res://Scripts/Resources/Components/component_stats.gd" id="1_4chcj"]
+
+[resource]
+script = ExtResource("1_4chcj")
+weight = 100
+quality = 3
+power = 250.0
+sheilding = 50.0
+metadata/_custom_type_script = "uid://drnyl6esifnyw"
