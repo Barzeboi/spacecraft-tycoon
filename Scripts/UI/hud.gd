@@ -8,10 +8,16 @@ var cockpit_marker = Vector2(150.0,250.0)
 var placer_active: bool = false
 var is_placeable: bool
 var placing_position: Vector2
-@onready var weight: Label = $PanelContainer/VBoxContainer/HBoxContainer/weight
-@onready var weight_pb : ProgressBar = $PanelContainer/VBoxContainer/HBoxContainer2/weight_pb
-@onready var quality: Label = $PanelContainer/VBoxContainer/HBoxContainer3/quailty
-@onready var quality_pb: ProgressBar = $PanelContainer/VBoxContainer/HBoxContainer4/quality_pb
+@onready var weight_pb : ProgressBar = $PanelContainer/Static/VBoxContainer/Weight/weight_pb
+@onready var quality_pb: ProgressBar = $PanelContainer/Accumulative/VBoxContainer/Quality/quality_pb
+@onready var power_pb: ProgressBar = $PanelContainer/Static/VBoxContainer/Power/power_pb
+@onready var lc_pb: ProgressBar = $PanelContainer/Static/VBoxContainer/Load_Cap/lc_pb
+@onready var ts_pb: ProgressBar = $PanelContainer/Static/VBoxContainer/Trans_Speed/ts_pb
+@onready var attack_pb: ProgressBar = $PanelContainer/Static/VBoxContainer/Attack/attack_pb
+@onready var defense_pb: ProgressBar = $PanelContainer/Static/VBoxContainer/Defense/defense_pb
+@onready var comfort_pb: ProgressBar = $PanelContainer/Accumulative/VBoxContainer/Comfort/comfort_pb
+@onready var maneuverability_pb: ProgressBar = $PanelContainer/Accumulative/VBoxContainer/Maneuverability/manuever_pb
+@onready var efficiency_pb: ProgressBar = $PanelContainer/Accumulative/VBoxContainer/Efficiency/efficiency_pb
 
 
 # Called when the node enters the scene tree for the first time.
@@ -73,5 +79,11 @@ func _stats_display(stats: StatsCalculation):
 	print("called")
 	weight_pb.value += stats.weight
 	quality_pb.value = stats.quality
+	power_pb.value += stats.power
+	lc_pb.value += stats.load_capacity
+	ts_pb.value += stats.transport_speed
+	efficiency_pb.value += stats.efficiency
+	maneuverability_pb.value += stats.maneuverability
+	comfort_pb.value += stats.comfort
 	
 	

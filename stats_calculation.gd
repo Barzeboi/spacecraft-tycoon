@@ -26,7 +26,6 @@ func _ready() -> void:
 	
 	
 func _stats_addition(stats:ComponentStats):
-	count += 1
 	weight += stats.weight
 	accum_quality += stats.quality
 	accum_efficiency += stats.efficiency
@@ -39,14 +38,21 @@ func _stats_addition(stats:ComponentStats):
 	defense += stats.defense
 	sheilding += stats.defense
 	fuel += stats.fuel
+	_stats_modifiers()
 	
+	print("called")
+	
+	
+func _stats_modifiers():
+	count += 1
+	weight = weight + (load_capacity * 0.25) + (fuel * 0.4)
+	accum_efficiency = accum_efficiency + (power * 0.2)
+	accum_maneuverability = accum_maneuverability - (weight * 0.15)
+	transport_speed = (transport_speed - (weight * 0.02)) * (efficiency/100)
+	comfort = (comfort * (quality)) - (load_capacity)
+
 	quality = accum_quality / count
 	efficiency = accum_efficiency / count
 	maneuverability = accum_maneuverability / count
 	comfort = accum_comfort / count
-	
-	print("called")
 	EventCall.emit_signal("script_changed", self)
-	
-func _stats_modifiers():
-	pass

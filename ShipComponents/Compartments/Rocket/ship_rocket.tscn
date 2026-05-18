@@ -11,7 +11,7 @@ script = ExtResource("2_xyq3f")
 weight = 500
 quality = 3
 efficiency = 75.0
-transport_speed = 2.0
+transport_speed = 200.0
 metadata/_custom_type_script = "uid://drnyl6esifnyw"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jroa6"]
