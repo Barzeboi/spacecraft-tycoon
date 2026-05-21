@@ -181,6 +181,7 @@ text = "load capacity"
 [node name="lc_pb" type="ProgressBar" parent="PanelContainer/Static/VBoxContainer/Load_Cap" unique_id=1397167870]
 layout_mode = 2
 size_flags_horizontal = 3
+max_value = 100000.0
 show_percentage = false
 
 [node name="Trans_Speed" type="VBoxContainer" parent="PanelContainer/Static/VBoxContainer" unique_id=984511149]

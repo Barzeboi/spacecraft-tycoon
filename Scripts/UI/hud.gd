@@ -77,13 +77,13 @@ func _place_component(comp_inst:PackedScene,plce: bool, position: Vector2):
 		
 func _stats_display(stats: StatsCalculation):
 	print("called")
-	weight_pb.value += stats.weight
+	weight_pb.value = stats.weight
 	quality_pb.value = stats.quality
-	power_pb.value += stats.power
-	lc_pb.value += stats.load_capacity
-	ts_pb.value += stats.transport_speed
-	efficiency_pb.value += stats.efficiency
-	maneuverability_pb.value += stats.maneuverability
-	comfort_pb.value += stats.comfort
+	power_pb.value = stats.power
+	lc_pb.value = stats.load_capacity
+	ts_pb.value = stats.transport_speed
+	efficiency_pb.value = stats.efficiency
+	maneuverability_pb.value = stats.maneuverability
+	comfort_pb.value = stats.comfort
 	
 	
