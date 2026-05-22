@@ -10,7 +10,7 @@ var power: float
 var accum_maneuverability: float
 var maneuverability: float
 var load_capacity: int
-var transport_speed: float
+var transport_speed: float = 0.0
 var accum_comfort: float
 var comfort: float
 var attack: float
@@ -48,9 +48,9 @@ func _stats_addition(stats:ComponentStats):
 	if stats.efficiency > 0.0:
 		eff_count += 1
 	if stats.maneuverability > 0.0:
-		man_count += 1.0
+		man_count += 1
 	if stats.comfort > 0.0:
-		com_count += 1.0
+		com_count += 1
 		
 	_stats_modifiers()
 	print(transport_speed)
@@ -60,7 +60,7 @@ func _stats_modifiers():
 	count += 1
 	weight = weight + (load_capacity * 0.25) + (fuel * 0.4)
 	accum_maneuverability = accum_maneuverability - (weight * 0.15)
-	transport_speed = (transport_speed - (weight * 0.0001)) * (efficiency/100)
+	#transport_speed = (transport_speed - (weight * 0.0001)) * (efficiency/100)
 	comfort = (comfort * (quality)) - (load_capacity)
 
 	quality = (accum_quality / count)
