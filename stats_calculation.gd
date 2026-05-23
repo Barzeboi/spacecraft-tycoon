@@ -1,11 +1,17 @@
 extends Node
 class_name StatsCalculation
 
-var weight: int
+
+var base_transport_speed: float
+var base_comfort: float
+var base_weight: float
+var base_accum_maneuverability: float
+
+var weight: float
 var accum_quality: float
 var quality: float
 var accum_efficiency: float
-var efficiency: float
+var efficiency: float = 0.0
 var power: float
 var accum_maneuverability: float
 var maneuverability: float
@@ -31,13 +37,13 @@ func _ready() -> void:
 	
 	
 func _stats_addition(stats:ComponentStats):
-	weight += stats.weight
+	base_weight += stats.weight
 	accum_quality += stats.quality
 	accum_efficiency += stats.efficiency
 	power += stats.power
-	accum_maneuverability += stats.maneuverability
+	base_accum_maneuverability += stats.maneuverability
 	load_capacity += stats.load_capacity
-	transport_speed += stats.transport_speed
+	base_transport_speed += stats.transport_speed
 	accum_comfort += stats.comfort
 	attack += stats.attack
 	defense += stats.defense
@@ -53,18 +59,24 @@ func _stats_addition(stats:ComponentStats):
 		com_count += 1
 		
 	_stats_modifiers()
-	print(transport_speed)
+
 	
 	
 func _stats_modifiers():
 	count += 1
-	weight = weight + (load_capacity * 0.25) + (fuel * 0.4)
-	accum_maneuverability = accum_maneuverability - (weight * 0.15)
-	#transport_speed = (transport_speed - (weight * 0.0001)) * (efficiency/100)
-	comfort = (comfort * (quality)) - (load_capacity)
-
+	
 	quality = (accum_quality / count)
 	efficiency = (accum_efficiency / eff_count)
+	base_comfort = (accum_comfort / com_count)
+	
+	weight = weight + (load_capacity * 0.25) + (fuel * 0.4)
+	accum_maneuverability = base_accum_maneuverability - (weight * 0.15)
+	transport_speed = (base_transport_speed - (weight * 0.02)) * (efficiency/100)
+	comfort = (base_comfort * (quality)) - (load_capacity)
+
 	maneuverability = (accum_maneuverability / man_count)
-	comfort = (accum_comfort / com_count)
+	
+	print("efficiency: " + str(efficiency))
+	print("transport_speed: " + str(transport_speed))
+	
 	EventCall.emit_signal("script_changed", self)

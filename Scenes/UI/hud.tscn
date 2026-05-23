@@ -194,6 +194,7 @@ text = "transport speed"
 [node name="ts_pb" type="ProgressBar" parent="PanelContainer/Static/VBoxContainer/Trans_Speed" unique_id=516653697]
 layout_mode = 2
 size_flags_horizontal = 3
+max_value = 20000.0
 show_percentage = false
 
 [node name="Attack" type="VBoxContainer" parent="PanelContainer/Static/VBoxContainer" unique_id=1600488426]
