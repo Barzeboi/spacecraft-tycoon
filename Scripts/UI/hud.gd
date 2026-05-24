@@ -3,6 +3,8 @@ extends CanvasLayer
 var selected_component: Dictionary = {"none": 0, "cockpit_1": 1, "cargo_1": 2, "fuel_1": 3, "rocket_1": 4}
 var current_component: int
 var placer
+var credits: int
+var component_cost: int
 var component_instance: PackedScene
 var cockpit_marker = Vector2(150.0,250.0)
 var placer_active: bool = false
@@ -18,6 +20,8 @@ var placing_position: Vector2
 @onready var comfort_pb: ProgressBar = $PanelContainer/Accumulative/VBoxContainer/Comfort/comfort_pb
 @onready var maneuverability_pb: ProgressBar = $PanelContainer/Accumulative/VBoxContainer/Maneuverability/manuever_pb
 @onready var efficiency_pb: ProgressBar = $PanelContainer/Accumulative/VBoxContainer/Efficiency/efficiency_pb
+@onready var money: Label = $Finances/HBoxContainer/Money
+@onready var balance: Label = $Finances/HBoxContainer/Balance
 
 
 # Called when the node enters the scene tree for the first time.
@@ -35,14 +39,15 @@ func _process(delta: float) -> void:
 	if is_instance_valid(placer):
 		placer.position = mouse_pos
 				
-func _button_pressed(component_num: int, component_inst: PackedScene, component_img: CompressedTexture2D):
+func _button_pressed(component: ComponentManager):
 	if is_instance_valid(placer):
 		_delete_placement_visualizer()
 	for i in selected_component:
-		if component_num == selected_component[i]:
+		if component.number == selected_component[i]:
 			current_component = selected_component[i]
-			component_instance = component_inst
-			_create_placement_visualizer(component_img)
+			component_instance = component.component
+			component_cost = component.price
+			_create_placement_visualizer(component.visual)
 		else:
 			print("false")
 	if current_component == 1:
@@ -86,4 +91,5 @@ func _stats_display(stats: StatsCalculation):
 	maneuverability_pb.value = stats.maneuverability
 	comfort_pb.value = stats.comfort
 	
-	
+func _finances_changed(cost: int):
+	pass

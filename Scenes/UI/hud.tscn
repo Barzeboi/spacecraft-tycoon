@@ -17,7 +17,6 @@ load_path = "res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.cte
 script = ExtResource("5_mqf2c")
 component = ExtResource("3_7wqu8")
 visual = SubResource("CompressedTexture2D_mqf2c")
-price = 62000.0
 name = &"Cockpit_1"
 number = 1
 metadata/_custom_type_script = "uid://cvqgbkw74v6oo"
@@ -26,7 +25,6 @@ metadata/_custom_type_script = "uid://cvqgbkw74v6oo"
 script = ExtResource("5_mqf2c")
 component = ExtResource("5_vsu76")
 visual = ExtResource("6_7wqu8")
-price = 24000.0
 name = &"Cargo_1"
 number = 2
 metadata/_custom_type_script = "uid://cvqgbkw74v6oo"
@@ -35,7 +33,6 @@ metadata/_custom_type_script = "uid://cvqgbkw74v6oo"
 script = ExtResource("5_mqf2c")
 component = ExtResource("6_mqf2c")
 visual = ExtResource("6_7wqu8")
-price = 18000.0
 name = &"Fuel_1"
 number = 3
 metadata/_custom_type_script = "uid://cvqgbkw74v6oo"
@@ -44,7 +41,6 @@ metadata/_custom_type_script = "uid://cvqgbkw74v6oo"
 script = ExtResource("5_mqf2c")
 component = ExtResource("7_7wqu8")
 visual = ExtResource("6_7wqu8")
-price = 30000.0
 name = &"Rocket_1"
 number = 4
 metadata/_custom_type_script = "uid://cvqgbkw74v6oo"
@@ -123,8 +119,14 @@ grow_horizontal = 1
 component_manager = SubResource("Resource_cna6x")
 
 [node name="Label" type="Label" parent="." unique_id=1539931722]
-offset_right = 40.0
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -80.0
+offset_right = 80.0
 offset_bottom = 23.0
+grow_horizontal = 2
+size_flags_horizontal = 4
 text = "Current Component:"
 
 [node name="PanelContainer" type="Panel" parent="." unique_id=31863932]
@@ -275,6 +277,29 @@ text = "maneuverability"
 [node name="manuever_pb" type="ProgressBar" parent="PanelContainer/Accumulative/VBoxContainer/Maneuverability" unique_id=2132116799]
 layout_mode = 2
 show_percentage = false
+
+[node name="Finances" type="Panel" parent="." unique_id=296460505]
+anchors_preset = 10
+anchor_right = 1.0
+offset_right = -864.0
+offset_bottom = 35.0
+grow_horizontal = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Finances" unique_id=924697725]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Money" type="Label" parent="Finances/HBoxContainer" unique_id=1510622569]
+layout_mode = 2
+text = "Money: xx"
+
+[node name="Balance" type="Label" parent="Finances/HBoxContainer" unique_id=1788773855]
+layout_mode = 2
+text = "Balance: xx"
 
 [node name="StatsCalculation" type="Node" parent="." unique_id=1195349802]
 script = ExtResource("9_fqivn")
