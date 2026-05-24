@@ -79,6 +79,7 @@ func _place_component(comp_inst:PackedScene,plce: bool, position: Vector2):
 		var place = comp_inst.instantiate()
 		place.global_position = position
 		owner.add_child(place)
+		_finances_changed(component_cost)
 		
 func _stats_display(stats: StatsCalculation):
 	print("called")
@@ -92,4 +93,4 @@ func _stats_display(stats: StatsCalculation):
 	comfort_pb.value = stats.comfort
 	
 func _finances_changed(cost: int):
-	pass
+	credits += cost
