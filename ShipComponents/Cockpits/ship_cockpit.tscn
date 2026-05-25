@@ -8,7 +8,7 @@
 
 [sub_resource type="Resource" id="Resource_rd3au"]
 script = ExtResource("2_rd3au")
-weight = 100
+weight = 450
 quality = 3
 power = 250.0
 sheilding = 50.0

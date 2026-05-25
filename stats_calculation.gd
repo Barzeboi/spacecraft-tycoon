@@ -69,9 +69,9 @@ func _stats_modifiers():
 	efficiency = (accum_efficiency / eff_count)
 	base_comfort = (accum_comfort / com_count)
 	
-	weight = weight + (load_capacity * 0.25) + (fuel * 0.4)
+	weight = base_weight + (load_capacity * 0.25) + (fuel * 0.4)
 	accum_maneuverability = base_accum_maneuverability - (weight * 0.15)
-	transport_speed = (base_transport_speed - (weight * 0.02)) * (efficiency/100)
+	transport_speed = (base_transport_speed / (weight * 0.08)) * (efficiency/100)
 	comfort = (base_comfort * (quality)) - (load_capacity)
 
 	maneuverability = (accum_maneuverability / man_count)

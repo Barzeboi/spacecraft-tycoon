@@ -8,3 +8,4 @@ signal placement(comp_inst,is_placeable, pos)
 signal stats_call(stats)
 @warning_ignore('unused_signal')
 signal stats_changed(stats)
+signal placed

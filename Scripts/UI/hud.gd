@@ -29,6 +29,8 @@ func _ready() -> void:
 	EventCall.connect("pressed", _button_pressed)
 	EventCall.connect('placement',_place_component)
 	EventCall.connect('script_changed',_stats_display)
+	credits = 100000
+	money.text = "Money" + str(credits)
 	
 	
 
@@ -78,6 +80,7 @@ func _place_component(comp_inst:PackedScene,plce: bool, position: Vector2):
 	if is_instance_valid(comp_inst) and is_placeable == true:
 		var place = comp_inst.instantiate()
 		place.global_position = position
+		EventCall.placed.emit()
 		owner.add_child(place)
 		_finances_changed(component_cost)
 		
@@ -93,4 +96,5 @@ func _stats_display(stats: StatsCalculation):
 	comfort_pb.value = stats.comfort
 	
 func _finances_changed(cost: int):
-	credits += cost
+	credits -= cost
+	money.text = "Money" + str(credits)
