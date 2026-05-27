@@ -6,7 +6,8 @@ var marker: Variant
 var marker_position: Vector2
 
 func _ready() -> void:
-	EventCall.connect("placed", _clear_marker)
+	EventCall.connect("clear_call", _clear_marker)
+	print(marker)
 
 func _on_mouse_entered() -> void:
 	var mouse_pos: Vector2 = get_global_mouse_position()
@@ -26,4 +27,7 @@ func _on_mouse_exited() -> void:
 	print(false)
 	
 func _clear_marker():
-	marker.get_child(0,false).visible = false
+	if marker == null:
+		return
+	else:
+		marker.get_child(0, false).visible = false

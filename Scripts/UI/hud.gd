@@ -53,7 +53,9 @@ func _button_pressed(component: ComponentManager):
 		else:
 			print("false")
 	if current_component == 1:
-		_place_component(component_instance,true, cockpit_marker)
+		is_placeable = true
+		_place_component(component_instance,is_placeable, cockpit_marker)
+		is_placeable = false
 		_delete_placement_visualizer()
 			
 			
@@ -80,7 +82,7 @@ func _place_component(comp_inst:PackedScene,plce: bool, position: Vector2):
 	if is_instance_valid(comp_inst) and is_placeable == true:
 		var place = comp_inst.instantiate()
 		place.global_position = position
-		EventCall.placed.emit()
+		EventCall.clear_call.emit()
 		owner.add_child(place)
 		_finances_changed(component_cost)
 		
