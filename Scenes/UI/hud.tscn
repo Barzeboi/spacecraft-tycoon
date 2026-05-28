@@ -53,6 +53,7 @@ metadata/_custom_type_script = "uid://cvqgbkw74v6oo"
 script = ExtResource("1_sprlj")
 
 [node name="TabContainer" type="TabContainer" parent="." unique_id=800234328]
+visible = false
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
@@ -310,3 +311,56 @@ text = "Balance: xx"
 
 [node name="StatsCalculation" type="Node" parent="." unique_id=1195349802]
 script = ExtResource("9_fqivn")
+
+[node name="Panel" type="Panel" parent="." unique_id=1791671469]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -406.0
+offset_top = -83.0
+offset_right = 406.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel" unique_id=791387201]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/HBoxContainer" unique_id=65748955]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="Panel/HBoxContainer/VBoxContainer" unique_id=766095565]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "01/2240"
+
+[node name="ProgressBar" type="ProgressBar" parent="Panel/HBoxContainer/VBoxContainer" unique_id=1195846352]
+layout_mode = 2
+show_percentage = false
+
+[node name="VSeparator" type="VSeparator" parent="Panel/HBoxContainer" unique_id=1636396273]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="Panel/HBoxContainer" unique_id=1168624436]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Build"
+
+[node name="VSeparator2" type="VSeparator" parent="Panel/HBoxContainer" unique_id=256404962]
+layout_mode = 2
+
+[node name="Button2" type="Button" parent="Panel/HBoxContainer" unique_id=48476637]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Report"
+
+[node name="VSeparator3" type="VSeparator" parent="Panel/HBoxContainer" unique_id=2063880801]
+layout_mode = 2
