@@ -49,6 +49,10 @@ name = &"Rocket_1"
 number = 4
 metadata/_custom_type_script = "uid://cvqgbkw74v6oo"
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fqivn"]
+bg_color = Color(0.101960786, 0.101960786, 0.101960786, 0.60784316)
+corner_detail = 20
+
 [node name="HUD" type="CanvasLayer" unique_id=2017374131]
 script = ExtResource("1_sprlj")
 
@@ -135,6 +139,7 @@ size_flags_horizontal = 4
 text = "Current Component:"
 
 [node name="PanelContainer" type="Panel" parent="." unique_id=31863932]
+visible = false
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
@@ -312,55 +317,96 @@ text = "Balance: xx"
 [node name="StatsCalculation" type="Node" parent="." unique_id=1195349802]
 script = ExtResource("9_fqivn")
 
-[node name="Panel" type="Panel" parent="." unique_id=1791671469]
+[node name="BottomUIBar" type="Panel" parent="." unique_id=1791671469]
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -406.0
+offset_left = -429.0
 offset_top = -83.0
-offset_right = 406.0
+offset_right = 429.0
 grow_horizontal = 2
 grow_vertical = 0
+metadata/_edit_group_ = true
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Panel" unique_id=791387201]
+[node name="HBoxContainer" type="HBoxContainer" parent="BottomUIBar" unique_id=791387201]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 8.0
+offset_right = 8.0
 grow_horizontal = 2
 grow_vertical = 2
+alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel/HBoxContainer" unique_id=65748955]
+[node name="PauseButton" type="Button" parent="BottomUIBar/HBoxContainer" unique_id=1460103457]
+layout_mode = 2
+text = "Pause
+"
+
+[node name="1xButton" type="Button" parent="BottomUIBar/HBoxContainer" unique_id=1401872494]
+layout_mode = 2
+text = "1x"
+
+[node name="2xButton" type="Button" parent="BottomUIBar/HBoxContainer" unique_id=132191057]
+layout_mode = 2
+text = "2x"
+
+[node name="5xButton" type="Button" parent="BottomUIBar/HBoxContainer" unique_id=1886379950]
+layout_mode = 2
+text = "5x"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="BottomUIBar/HBoxContainer" unique_id=65748955]
 layout_mode = 2
 alignment = 1
 
-[node name="Label" type="Label" parent="Panel/HBoxContainer/VBoxContainer" unique_id=766095565]
+[node name="CurrentTime" type="Label" parent="BottomUIBar/HBoxContainer/VBoxContainer" unique_id=766095565]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "01/2240"
 
-[node name="ProgressBar" type="ProgressBar" parent="Panel/HBoxContainer/VBoxContainer" unique_id=1195846352]
+[node name="TimeProgress" type="ProgressBar" parent="BottomUIBar/HBoxContainer/VBoxContainer" unique_id=1195846352]
 layout_mode = 2
+max_value = 1000.0
+step = 1.0
 show_percentage = false
 
-[node name="VSeparator" type="VSeparator" parent="Panel/HBoxContainer" unique_id=1636396273]
+[node name="VSeparator" type="VSeparator" parent="BottomUIBar/HBoxContainer" unique_id=1636396273]
 layout_mode = 2
 
-[node name="Button" type="Button" parent="Panel/HBoxContainer" unique_id=1168624436]
+[node name="BuildButton" type="Button" parent="BottomUIBar/HBoxContainer" unique_id=1168624436]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_fqivn")
 text = "Build"
 
-[node name="VSeparator2" type="VSeparator" parent="Panel/HBoxContainer" unique_id=256404962]
+[node name="VSeparator2" type="VSeparator" parent="BottomUIBar/HBoxContainer" unique_id=256404962]
 layout_mode = 2
 
-[node name="Button2" type="Button" parent="Panel/HBoxContainer" unique_id=48476637]
+[node name="ReportButton" type="Button" parent="BottomUIBar/HBoxContainer" unique_id=48476637]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "Report"
 
-[node name="VSeparator3" type="VSeparator" parent="Panel/HBoxContainer" unique_id=2063880801]
+[node name="VSeparator3" type="VSeparator" parent="BottomUIBar/HBoxContainer" unique_id=2063880801]
 layout_mode = 2
+
+[node name="ResearchButton" type="Button" parent="BottomUIBar/HBoxContainer" unique_id=1571710660]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Research"
+
+[node name="VSeparator4" type="VSeparator" parent="BottomUIBar/HBoxContainer" unique_id=543786532]
+layout_mode = 2
+
+[node name="ContractButton" type="Button" parent="BottomUIBar/HBoxContainer" unique_id=1161371534]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Contracts"
+
+[connection signal="pressed" from="BottomUIBar/HBoxContainer/PauseButton" to="." method="_on_pause_button_pressed"]
+[connection signal="pressed" from="BottomUIBar/HBoxContainer/1xButton" to="." method="_on_1x_button_pressed"]
+[connection signal="pressed" from="BottomUIBar/HBoxContainer/2xButton" to="." method="_on_2x_button_pressed"]
+[connection signal="pressed" from="BottomUIBar/HBoxContainer/5xButton" to="." method="_on_4x_button_pressed"]
+[connection signal="pressed" from="BottomUIBar/HBoxContainer/BuildButton" to="." method="_on_build_button_pressed"]

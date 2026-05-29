@@ -19,6 +19,10 @@ config/icon="res://icon.svg"
 
 EventCall="*uid://bwdrar4shsqm0"
 
+[display]
+
+window/vsync/vsync_mode=0
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/ridiculous_coding/plugin.cfg")

@@ -1,5 +1,8 @@
 extends CanvasLayer
 
+
+signal tick
+
 var selected_component: Dictionary = {"none": 0, "cockpit_1": 1, "cargo_1": 2, "fuel_1": 3, "rocket_1": 4}
 var current_component: int
 var placer
@@ -22,13 +25,20 @@ var placing_position: Vector2
 @onready var efficiency_pb: ProgressBar = $PanelContainer/Accumulative/VBoxContainer/Efficiency/efficiency_pb
 @onready var money: Label = $Finances/HBoxContainer/Money
 @onready var balance: Label = $Finances/HBoxContainer/Balance
+@onready var time: ProgressBar = $BottomUIBar/HBoxContainer/VBoxContainer/TimeProgress
+
+var month: int = 1
+var year: int = 2240
+var time_progress: int = 1
+var current_time_string: String = "%s/%s"
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	EventCall.connect("pressed", _button_pressed)
+	EventCall.connect("pressed", _component_button_pressed)
 	EventCall.connect('placement',_place_component)
 	EventCall.connect('script_changed',_stats_display)
+	connect("tick", _tick)
 	credits = 100000
 	money.text = "Money" + str(credits)
 	
@@ -40,8 +50,16 @@ func _process(delta: float) -> void:
 	$Label.text = "Current Component: " + str(current_component)
 	if is_instance_valid(placer):
 		placer.position = mouse_pos
+		
+	if time.value >= 1000.0:
+		tick.emit()
+	
+		
+func _physics_process(delta: float) -> void:
+	time.value += time_progress
+	
 				
-func _button_pressed(component: ComponentManager):
+func _component_button_pressed(component: ComponentManager):
 	if is_instance_valid(placer):
 		_delete_placement_visualizer()
 	for i in selected_component:
@@ -64,6 +82,14 @@ func _unhandled_input(event: InputEvent) -> void:
 			if event.button_index == MOUSE_BUTTON_LEFT and event.is_pressed():
 				if placer_active and is_placeable == true:
 					_place_component(component_instance,is_placeable, placing_position)
+					
+func _tick():
+	time.value = 0
+	month += 1
+	if month >= 13:
+		month = 1
+		year += 1
+	$BottomUIBar/HBoxContainer/VBoxContainer/CurrentTime.text = current_time_string % ["%0*d" % [2, month], year]
 
 func _create_placement_visualizer(visual: CompressedTexture2D):
 	placer = Sprite2D.new()
@@ -100,3 +126,21 @@ func _stats_display(stats: StatsCalculation):
 func _finances_changed(cost: int):
 	credits -= cost
 	money.text = "Money" + str(credits)
+
+func _on_pause_button_pressed() -> void:
+	time_progress = 0
+
+func _on_1x_button_pressed() -> void:
+	time_progress = 2
+
+func _on_2x_button_pressed() -> void:
+	time_progress = 4
+
+func _on_4x_button_pressed() -> void:
+	time_progress = 10
+
+func _on_build_button_pressed() -> void:
+	$BottomUIBar.hide()
+	$TabContainer.show()
+	$PanelContainer.show()
+	time_progress = 0
