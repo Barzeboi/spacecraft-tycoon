@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://bh5hwc4s5tndw" path="res://icon.svg" id="6_7wqu8"]
 [ext_resource type="PackedScene" uid="uid://b7owrufkii4nj" path="res://ShipComponents/Compartments/Fuel/ship_fuel_component.tscn" id="6_mqf2c"]
 [ext_resource type="PackedScene" uid="uid://djiipks7iuwb5" path="res://ShipComponents/Compartments/Rocket/ship_rocket.tscn" id="7_7wqu8"]
-[ext_resource type="Script" uid="uid://cnwt6o23swxhx" path="res://stats_calculation.gd" id="9_fqivn"]
+[ext_resource type="Script" uid="uid://cnwt6o23swxhx" path="res://Scripts/Calculations/stats_calculation.gd" id="9_fqivn"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_mqf2c"]
 load_path = "res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex"
