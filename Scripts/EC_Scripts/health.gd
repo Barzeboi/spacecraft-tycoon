@@ -1,5 +1,5 @@
-class_name HealthComponent
 extends Node
+class_name HealthComponent
 
 signal damaged(health_lost)
 signal repairing(health_gained)

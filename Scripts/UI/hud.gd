@@ -1,7 +1,7 @@
 extends CanvasLayer
 
 
-signal tick
+
 
 var selected_component: Dictionary = {"none": 0, "cockpit_1": 1, "cargo_1": 2, "fuel_1": 3, "rocket_1": 4}
 var current_component: int
@@ -27,9 +27,7 @@ var placing_position: Vector2
 @onready var balance: Label = $Finances/HBoxContainer/Balance
 @onready var time: ProgressBar = $BottomUIBar/HBoxContainer/VBoxContainer/TimeProgress
 
-var month: int = 1
-var year: int = 2240
-var time_progress: int = 1
+
 var current_time_string: String = "%s/%s"
 
 
@@ -38,7 +36,7 @@ func _ready() -> void:
 	EventCall.connect("pressed", _component_button_pressed)
 	EventCall.connect('placement',_place_component)
 	EventCall.connect('script_changed',_stats_display)
-	connect("tick", _tick)
+	WorldState.connect("tick", _tick)
 	credits = 100000
 	money.text = "Money" + str(credits)
 	
@@ -52,11 +50,11 @@ func _process(delta: float) -> void:
 		placer.position = mouse_pos
 		
 	if time.value >= 1000.0:
-		tick.emit()
+		WorldState.tick.emit()
 	
 		
 func _physics_process(delta: float) -> void:
-	time.value += time_progress
+	time.value += WorldState.time_progress
 	
 				
 func _component_button_pressed(component: ComponentManager):
@@ -85,11 +83,7 @@ func _unhandled_input(event: InputEvent) -> void:
 					
 func _tick():
 	time.value = 0
-	month += 1
-	if month >= 13:
-		month = 1
-		year += 1
-	$BottomUIBar/HBoxContainer/VBoxContainer/CurrentTime.text = current_time_string % ["%0*d" % [2, month], year]
+	$BottomUIBar/HBoxContainer/VBoxContainer/CurrentTime.text = current_time_string % ["%0*d" % [2, WorldState.month], WorldState.year]
 
 func _create_placement_visualizer(visual: CompressedTexture2D):
 	placer = Sprite2D.new()
@@ -128,19 +122,19 @@ func _finances_changed(cost: int):
 	money.text = "Money" + str(credits)
 
 func _on_pause_button_pressed() -> void:
-	time_progress = 0
+	WorldState.time_progress = 0
 
 func _on_1x_button_pressed() -> void:
-	time_progress = 2
+	WorldState.time_progress = 2
 
 func _on_2x_button_pressed() -> void:
-	time_progress = 4
+	WorldState.time_progress = 4
 
 func _on_4x_button_pressed() -> void:
-	time_progress = 10
+	WorldState.time_progress = 10
 
 func _on_build_button_pressed() -> void:
 	$BottomUIBar.hide()
 	$TabContainer.show()
 	$PanelContainer.show()
-	time_progress = 0
+	WorldState.time_progress = 0
