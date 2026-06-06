@@ -8,7 +8,6 @@
 [ext_resource type="Texture2D" uid="uid://bh5hwc4s5tndw" path="res://icon.svg" id="6_7wqu8"]
 [ext_resource type="PackedScene" uid="uid://b7owrufkii4nj" path="res://ShipComponents/Compartments/Fuel/ship_fuel_component.tscn" id="6_mqf2c"]
 [ext_resource type="PackedScene" uid="uid://djiipks7iuwb5" path="res://ShipComponents/Compartments/Rocket/ship_rocket.tscn" id="7_7wqu8"]
-[ext_resource type="Script" uid="uid://cnwt6o23swxhx" path="res://Scripts/Calculations/stats_calculation.gd" id="9_fqivn"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_mqf2c"]
 load_path = "res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex"
@@ -314,9 +313,6 @@ text = "Money: xx"
 layout_mode = 2
 text = "Balance: xx"
 
-[node name="StatsCalculation" type="Node" parent="." unique_id=1195349802]
-script = ExtResource("9_fqivn")
-
 [node name="BottomUIBar" type="Panel" parent="." unique_id=1791671469]
 anchors_preset = 7
 anchor_left = 0.5
@@ -408,5 +404,5 @@ text = "Contracts"
 [connection signal="pressed" from="BottomUIBar/HBoxContainer/PauseButton" to="." method="_on_pause_button_pressed"]
 [connection signal="pressed" from="BottomUIBar/HBoxContainer/1xButton" to="." method="_on_1x_button_pressed"]
 [connection signal="pressed" from="BottomUIBar/HBoxContainer/2xButton" to="." method="_on_2x_button_pressed"]
-[connection signal="pressed" from="BottomUIBar/HBoxContainer/5xButton" to="." method="_on_4x_button_pressed"]
+[connection signal="pressed" from="BottomUIBar/HBoxContainer/5xButton" to="." method="_on_5x_button_pressed"]
 [connection signal="pressed" from="BottomUIBar/HBoxContainer/BuildButton" to="." method="_on_build_button_pressed"]

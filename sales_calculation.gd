@@ -14,9 +14,10 @@ enum BuyerDemographics
 	WORLD_SHIP_DWELLERS
 }
 
-var preffered_demographic: BuyerDemographics = BuyerDemographics.NONE
-var quaility_importance: int
+@export var stats_calculation: StatsCalculation
+var preferred_demographic: BuyerDemographics = BuyerDemographics.NONE
 var attack_importance: int
+var defense_importance: int
 var maneuverability_importance: int
 var load_cap_importance: int
 var transport_speed_importance: int
@@ -24,31 +25,92 @@ var comfort_importance: int
 var sheild_importance: int
 var fuel_importance: int
 
+var weigh_max: float = 10000000
+var efficiency_max: float = 100
+var load_capacity_max: float = 10000
+var transport_speed_max: float = 20000
+var comfort_max: float = 100
+var attack_max: float = 100
+var defense_max: float = 100
+var shielding_max: float = 100
+var fuel_max: float = 100
+
+var sales_score: float
 
 func _get_buyer_demographics():
-	match preffered_demographic:
+	match preferred_demographic:
 		BuyerDemographics.TRANSPORTERS:
-			quaility_importance = 45
 			attack_importance = 5
+			defense_importance = 30
 			maneuverability_importance = 80
 			load_cap_importance = 25
+			transport_speed_importance = 70
 			comfort_importance = 60
 			sheild_importance = 40
 			fuel_importance = 50
 		BuyerDemographics.ESCORTS:
-			pass
+			attack_importance = 55
+			defense_importance = 10
+			maneuverability_importance = 90
+			load_cap_importance = 10
+			transport_speed_importance = 60
+			comfort_importance = 20
+			sheild_importance = 80
+			fuel_importance = 45
 		BuyerDemographics.MERCHANTS:
-			pass
+			attack_importance = 5
+			defense_importance = 50
+			maneuverability_importance = 40
+			load_cap_importance = 70
+			transport_speed_importance = 30
+			comfort_importance = 20
+			sheild_importance = 70
+			fuel_importance = 80
 		BuyerDemographics.PIRATE_HUNTERS:
-			pass
+			attack_importance = 80
+			defense_importance = 30
+			maneuverability_importance = 40
+			load_cap_importance = 70
+			transport_speed_importance = 55
+			comfort_importance = 35
+			sheild_importance = 45
+			fuel_importance = 55
 		BuyerDemographics.LUXURY_TRANSPORTERS:
-			pass
+			attack_importance = 5
+			defense_importance = 25
+			maneuverability_importance = 60
+			load_cap_importance = 20
+			transport_speed_importance = 85
+			comfort_importance = 100
+			sheild_importance = 30
+			fuel_importance = 65
 		BuyerDemographics.MERCENARIES:
-			pass
+			attack_importance = 100
+			defense_importance = 45
+			maneuverability_importance = 45
+			load_cap_importance = 20
+			transport_speed_importance = 60
+			comfort_importance = 15
+			sheild_importance = 90
+			fuel_importance = 60
 		BuyerDemographics.BULK_TRADERS:
-			pass
+			attack_importance = 20
+			defense_importance = 65
+			maneuverability_importance = 5
+			load_cap_importance = 100
+			transport_speed_importance = 25
+			comfort_importance = 5
+			sheild_importance = 60
+			fuel_importance = 95
 		BuyerDemographics.WORLD_SHIP_DWELLERS:
-			pass
+			attack_importance = 50
+			defense_importance = 100
+			maneuverability_importance = 5
+			load_cap_importance = 100
+			transport_speed_importance = 5
+			comfort_importance = 75
+			sheild_importance = 100
+			fuel_importance = 90
 
 
 func _sales_calcalulations():

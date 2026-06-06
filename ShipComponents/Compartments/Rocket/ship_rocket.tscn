@@ -10,7 +10,7 @@
 script = ExtResource("2_xyq3f")
 weight = 500
 quality = 3
-efficiency = 75.0
+efficiency = 30.0
 transport_speed = 35000.0
 metadata/_custom_type_script = "uid://drnyl6esifnyw"
 

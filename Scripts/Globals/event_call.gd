@@ -9,3 +9,4 @@ signal stats_call(stats)
 @warning_ignore('unused_signal')
 signal stats_changed(stats)
 signal clear_call
+signal script_ch

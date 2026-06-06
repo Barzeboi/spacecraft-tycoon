@@ -24,6 +24,8 @@ var defense: float
 var sheilding: float
 var fuel: int
 
+
+
 var previous_stats: Array[Variant]
 
 var count: int
@@ -31,10 +33,8 @@ var eff_count: int
 var man_count: int
 var com_count: int
 
-
 func _ready() -> void:
 	EventCall.connect('stats_call', _stats_addition)
-	
 	
 func _stats_addition(stats:ComponentStats):
 	base_weight += stats.weight
@@ -50,7 +50,6 @@ func _stats_addition(stats:ComponentStats):
 	sheilding += stats.defense
 	fuel += stats.fuel
 	
-	
 	if stats.efficiency > 0.0:
 		eff_count += 1
 	if stats.maneuverability > 0.0:
@@ -59,8 +58,6 @@ func _stats_addition(stats:ComponentStats):
 		com_count += 1
 		
 	_stats_modifiers()
-
-	
 	
 func _stats_modifiers():
 	count += 1
@@ -79,4 +76,4 @@ func _stats_modifiers():
 	print("efficiency: " + str(efficiency))
 	print("transport_speed: " + str(transport_speed))
 	
-	EventCall.emit_signal("script_changed", self)
+	EventCall.emit_signal("stats_changed", self)

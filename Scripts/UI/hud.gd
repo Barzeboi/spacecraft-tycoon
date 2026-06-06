@@ -34,8 +34,8 @@ var current_time_string: String = "%s/%s"
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	EventCall.connect("pressed", _component_button_pressed)
-	EventCall.connect('placement',_place_component)
-	EventCall.connect('script_changed',_stats_display)
+	EventCall.connect("placement",_place_component)
+	EventCall.connect("stats_changed",_stats_display)
 	WorldState.connect("tick", _tick)
 	credits = 100000
 	money.text = "Money" + str(credits)
@@ -130,7 +130,7 @@ func _on_1x_button_pressed() -> void:
 func _on_2x_button_pressed() -> void:
 	WorldState.time_progress = 4
 
-func _on_4x_button_pressed() -> void:
+func _on_5x_button_pressed() -> void:
 	WorldState.time_progress = 10
 
 func _on_build_button_pressed() -> void:
