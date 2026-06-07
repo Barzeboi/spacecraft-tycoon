@@ -37,6 +37,9 @@ var fuel_max: float = 100
 
 var sales_score: float
 
+func _ready() -> void:
+	pass
+
 func _get_buyer_demographics():
 	match preferred_demographic:
 		BuyerDemographics.TRANSPORTERS:
@@ -48,6 +51,7 @@ func _get_buyer_demographics():
 			comfort_importance = 60
 			sheild_importance = 40
 			fuel_importance = 50
+			
 		BuyerDemographics.ESCORTS:
 			attack_importance = 55
 			defense_importance = 10
@@ -114,4 +118,7 @@ func _get_buyer_demographics():
 
 
 func _sales_calcalulations():
+	pass
+	
+func demographics_distribution():
 	pass

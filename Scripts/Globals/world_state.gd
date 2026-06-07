@@ -5,8 +5,9 @@ signal tick
 var month: int = 1
 var year: int = 2240
 var time_progress: int = 1
-var base_customer_base: int = 50000
+var base_customer_base: int = 250000
 var customer_base : float
+var customer_fluc
 var world_economy: float = 1.0
 
 func _ready() -> void:

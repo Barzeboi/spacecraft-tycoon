@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://c55e2sdgd3m58" path="res://Scenes/UI/hud.tscn" id="1_x87qo"]
 [ext_resource type="Script" uid="uid://b7ugi3ljcp0bc" path="res://Scripts/UI/Camera.gd" id="2_b6fju"]
 [ext_resource type="Script" uid="uid://cnwt6o23swxhx" path="res://Scripts/Calculations/stats_calculation.gd" id="3_fiftr"]
-[ext_resource type="Script" uid="uid://o35dili6mwrh" path="res://sales_calculation.gd" id="4_1ixah"]
+[ext_resource type="Script" uid="uid://o35dili6mwrh" path="res://Scripts/Calculations/sales_calculation.gd" id="4_1ixah"]
 
 [node name="GameScene" type="Node" unique_id=1225634550]
 
