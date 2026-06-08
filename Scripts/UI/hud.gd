@@ -1,7 +1,7 @@
 extends CanvasLayer
 
 
-
+signal info_send(name, price)
 
 var selected_component: Dictionary = {"none": 0, "cockpit_1": 1, "cargo_1": 2, "fuel_1": 3, "rocket_1": 4}
 var current_component: int
@@ -13,6 +13,10 @@ var cockpit_marker = Vector2(150.0,250.0)
 var placer_active: bool = false
 var is_placeable: bool
 var placing_position: Vector2
+
+var ship_name: String
+var price: int
+
 @onready var weight_pb : ProgressBar = $PanelContainer/Static/VBoxContainer/Weight/weight_pb
 @onready var quality_pb: ProgressBar = $PanelContainer/Accumulative/VBoxContainer/Quality/quality_pb
 @onready var power_pb: ProgressBar = $PanelContainer/Static/VBoxContainer/Power/power_pb
@@ -138,3 +142,10 @@ func _on_build_button_pressed() -> void:
 	$TabContainer.show()
 	$PanelContainer.show()
 	WorldState.time_progress = 0
+
+func _on_done_button_pressed() -> void:
+	$DonePanel.show()
+
+func _on_stm_button_pressed() -> void:
+	emit_signal("info_send", ship_name, price)
+	$DonePanel.hide()

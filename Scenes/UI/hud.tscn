@@ -56,11 +56,11 @@ corner_detail = 20
 script = ExtResource("1_sprlj")
 
 [node name="TabContainer" type="TabContainer" parent="." unique_id=800234328]
-visible = false
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 3.0
 offset_top = -236.0
 grow_horizontal = 2
 grow_vertical = 0
@@ -138,7 +138,6 @@ size_flags_horizontal = 4
 text = "Current Component:"
 
 [node name="PanelContainer" type="Panel" parent="." unique_id=31863932]
-visible = false
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
@@ -314,6 +313,7 @@ layout_mode = 2
 text = "Balance: xx"
 
 [node name="BottomUIBar" type="Panel" parent="." unique_id=1791671469]
+visible = false
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
@@ -401,8 +401,61 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "Contracts"
 
+[node name="DoneButton" type="Button" parent="." unique_id=1394918502]
+offset_left = 982.0
+offset_top = 291.0
+offset_right = 1113.0
+offset_bottom = 366.0
+theme_override_font_sizes/font_size = 48
+text = "Done"
+
+[node name="DonePanel" type="Panel" parent="." unique_id=917042796]
+offset_left = 349.0
+offset_top = 114.0
+offset_right = 689.0
+offset_bottom = 380.0
+
+[node name="Price" type="Label" parent="DonePanel" unique_id=1557591717]
+layout_mode = 0
+offset_left = 192.0
+offset_top = 169.0
+offset_right = 235.0
+offset_bottom = 192.0
+text = "Price:"
+
+[node name="LineEdit" type="LineEdit" parent="DonePanel/Price" unique_id=259807473]
+layout_mode = 0
+offset_left = 55.0
+offset_top = -6.0
+offset_right = 123.5
+offset_bottom = 25.0
+
+[node name="Name" type="Label" parent="DonePanel" unique_id=546784210]
+layout_mode = 0
+offset_left = 192.0
+offset_top = 127.0
+offset_right = 243.0
+offset_bottom = 150.0
+text = "Name:"
+
+[node name="LineEdit" type="LineEdit" parent="DonePanel/Name" unique_id=868871066]
+layout_mode = 0
+offset_left = 55.0
+offset_right = 123.5
+offset_bottom = 31.0
+
+[node name="STMButton" type="Button" parent="DonePanel" unique_id=844641549]
+layout_mode = 0
+offset_left = 93.0
+offset_top = 225.0
+offset_right = 222.0
+offset_bottom = 256.0
+text = "Send To Market"
+
 [connection signal="pressed" from="BottomUIBar/HBoxContainer/PauseButton" to="." method="_on_pause_button_pressed"]
 [connection signal="pressed" from="BottomUIBar/HBoxContainer/1xButton" to="." method="_on_1x_button_pressed"]
 [connection signal="pressed" from="BottomUIBar/HBoxContainer/2xButton" to="." method="_on_2x_button_pressed"]
 [connection signal="pressed" from="BottomUIBar/HBoxContainer/5xButton" to="." method="_on_5x_button_pressed"]
 [connection signal="pressed" from="BottomUIBar/HBoxContainer/BuildButton" to="." method="_on_build_button_pressed"]
+[connection signal="pressed" from="DoneButton" to="." method="_on_done_button_pressed"]
+[connection signal="pressed" from="DonePanel/STMButton" to="." method="_on_stm_button_pressed"]

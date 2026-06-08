@@ -10,3 +10,4 @@ signal stats_call(stats)
 signal stats_changed(stats)
 signal clear_call
 signal script_ch
+signal send_score(score)
