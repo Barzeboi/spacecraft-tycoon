@@ -5,15 +5,18 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -893.0
-offset_bottom = -324.0
+offset_right = -990.0
+offset_bottom = -255.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ItemList" type="ItemList" parent="." unique_id=1320254532]
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=8877640]
 layout_mode = 0
-offset_right = 158.0
-offset_bottom = 389.0
+offset_right = 319.0
+offset_bottom = 333.0
+
+[node name="ItemList" type="ItemList" parent="PanelContainer" unique_id=1320254532]
+layout_mode = 2
 allow_search = false
 auto_height = true
 item_count = 10

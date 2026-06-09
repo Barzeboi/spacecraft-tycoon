@@ -30,6 +30,8 @@ var price: int
 @onready var money: Label = $Finances/HBoxContainer/Money
 @onready var balance: Label = $Finances/HBoxContainer/Balance
 @onready var time: ProgressBar = $BottomUIBar/HBoxContainer/VBoxContainer/TimeProgress
+@onready var name_edit : LineEdit = $DonePanel/Name/LineEdit
+@onready var price_edit: LineEdit = $DonePanel/Price/LineEdit
 
 
 var current_time_string: String = "%s/%s"
@@ -52,13 +54,11 @@ func _process(delta: float) -> void:
 	$Label.text = "Current Component: " + str(current_component)
 	if is_instance_valid(placer):
 		placer.position = mouse_pos
-		
-	if time.value >= 1000.0:
-		WorldState.tick.emit()
+	
 	
 		
 func _physics_process(delta: float) -> void:
-	time.value += WorldState.time_progress
+	time.value = WorldState.time_progress
 	
 				
 func _component_button_pressed(component: ComponentManager):
@@ -86,7 +86,6 @@ func _unhandled_input(event: InputEvent) -> void:
 					_place_component(component_instance,is_placeable, placing_position)
 					
 func _tick():
-	time.value = 0
 	$BottomUIBar/HBoxContainer/VBoxContainer/CurrentTime.text = current_time_string % ["%0*d" % [2, WorldState.month], WorldState.year]
 
 func _create_placement_visualizer(visual: CompressedTexture2D):
@@ -126,22 +125,22 @@ func _finances_changed(cost: int):
 	money.text = "Money" + str(credits)
 
 func _on_pause_button_pressed() -> void:
-	WorldState.time_progress = 0
+	WorldState.time_speed = 0
 
 func _on_1x_button_pressed() -> void:
-	WorldState.time_progress = 2
+	WorldState.time_speed = 1
 
 func _on_2x_button_pressed() -> void:
-	WorldState.time_progress = 4
+	WorldState.time_speed = 2
 
 func _on_5x_button_pressed() -> void:
-	WorldState.time_progress = 10
+	WorldState.time_speed = 5
 
 func _on_build_button_pressed() -> void:
 	$BottomUIBar.hide()
 	$TabContainer.show()
 	$PanelContainer.show()
-	WorldState.time_progress = 0
+	WorldState.time_speed = 0
 
 func _on_done_button_pressed() -> void:
 	$DonePanel.show()

@@ -1,4 +1,4 @@
-extends Node
+extends WorldState
 class_name SalesCalculation
 
 enum BuyerDemographics
@@ -39,6 +39,7 @@ var fuel_max: float = 100
 var sales_score: float
 var marketing: float
 var price: int
+var sales_amount
 
 func _ready() -> void:
 	pass
@@ -142,4 +143,8 @@ func demographics_distribution():
 	pass
 
 func _sales_calculation(sales_score: int):
-	var sales_amount = randi_range(2, 10) + (sales_score/1000)
+	sales_amount = randi_range(2, 10) + (sales_score/1000)
+	
+
+func _tick():
+	pass

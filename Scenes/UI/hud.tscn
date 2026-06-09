@@ -56,6 +56,7 @@ corner_detail = 20
 script = ExtResource("1_sprlj")
 
 [node name="TabContainer" type="TabContainer" parent="." unique_id=800234328]
+visible = false
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
@@ -313,7 +314,6 @@ layout_mode = 2
 text = "Balance: xx"
 
 [node name="BottomUIBar" type="Panel" parent="." unique_id=1791671469]
-visible = false
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
@@ -402,6 +402,7 @@ theme_override_font_sizes/font_size = 32
 text = "Contracts"
 
 [node name="DoneButton" type="Button" parent="." unique_id=1394918502]
+visible = false
 offset_left = 982.0
 offset_top = 291.0
 offset_right = 1113.0
