@@ -1,7 +1,6 @@
 extends CanvasLayer
 
 
-signal info_send(name, price)
 
 var selected_component: Dictionary = {"none": 0, "cockpit_1": 1, "cargo_1": 2, "fuel_1": 3, "rocket_1": 4}
 var current_component: int
@@ -140,11 +139,13 @@ func _on_build_button_pressed() -> void:
 	$BottomUIBar.hide()
 	$TabContainer.show()
 	$PanelContainer.show()
+	$DoneButton.show()
 	WorldState.time_speed = 0
 
 func _on_done_button_pressed() -> void:
 	$DonePanel.show()
 
 func _on_stm_button_pressed() -> void:
-	emit_signal("info_send", ship_name, price)
+	EventCall.emit_signal("info_send", ship_name, price)
+	await EventCall.array_finished
 	$DonePanel.hide()

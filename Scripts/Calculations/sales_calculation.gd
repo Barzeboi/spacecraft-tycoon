@@ -147,4 +147,4 @@ func _sales_calculation(sales_score: int):
 	
 
 func _tick():
-	pass
+	pass 

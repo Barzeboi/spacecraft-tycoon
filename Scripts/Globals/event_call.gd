@@ -10,4 +10,7 @@ signal stats_call(stats)
 signal stats_changed(stats)
 signal clear_call
 signal script_ch
-signal send_score(score)
+signal gather_score(score)
+signal info_gather(name, price)
+signal info_send(name, price, score)
+signal array_finished

@@ -411,6 +411,7 @@ theme_override_font_sizes/font_size = 48
 text = "Done"
 
 [node name="DonePanel" type="Panel" parent="." unique_id=917042796]
+visible = false
 offset_left = 349.0
 offset_top = 114.0
 offset_right = 689.0
