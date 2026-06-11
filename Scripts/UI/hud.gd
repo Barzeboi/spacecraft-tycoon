@@ -1,6 +1,8 @@
 extends CanvasLayer
 
 
+signal send_to_sales(stats)
+
 
 var selected_component: Dictionary = {"none": 0, "cockpit_1": 1, "cargo_1": 2, "fuel_1": 3, "rocket_1": 4}
 var current_component: int
@@ -38,9 +40,9 @@ var current_time_string: String = "%s/%s"
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	EventCall.connect("pressed", _component_button_pressed)
-	EventCall.connect("placement",_place_component)
-	EventCall.connect("stats_changed",_stats_display)
+	EventCall.connect("pressed", _component_button_pressed) # <----- component buttons
+	EventCall.connect("placement",_place_component) # <----- attach_script
+	EventCall.connect("stats_changed",_stats_display) # <----- Stats_Calculation
 	WorldState.connect("tick", _tick)
 	credits = 100000
 	money.text = "Money" + str(credits)
@@ -143,9 +145,11 @@ func _on_build_button_pressed() -> void:
 	WorldState.time_speed = 0
 
 func _on_done_button_pressed() -> void:
+	var stats: StatsCalculation
+	EventCall.finished_stats_call.emit()
 	$DonePanel.show()
 
 func _on_stm_button_pressed() -> void:
-	EventCall.emit_signal("info_send", ship_name, price)
+	EventCall.emit_signal("info_gather", ship_name, price)
 	await EventCall.array_finished
 	$DonePanel.hide()

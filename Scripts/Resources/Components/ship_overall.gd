@@ -2,13 +2,13 @@ extends Resource
 class_name ShipOverall
 
 
-var sales_score: int
+var sales_score: int = 0
 var name: String
-var price: int
+var price: int = 0
 
 func _ready():
-	EventCall.connect("send_score", _get_info)
-	EventCall.connect("info_send", _get_info)
+	EventCall.connect("score_gather", _get_info)
+	EventCall.connect("info_gather", _get_info)
 	
 
 func _get_info(n: String, p: int, s: int):

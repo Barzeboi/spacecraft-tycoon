@@ -33,7 +33,7 @@ var maneuverability_max: float = 100
 var comfort_max: float = 100
 var attack_max: float = 100
 var defense_max: float = 100
-var shielding_max: float = 100
+var sheilding_max: float = 100
 var fuel_max: float = 100
 
 var sales_score: float
@@ -42,7 +42,7 @@ var price: int
 var sales_amount
 
 func _ready() -> void:
-	pass
+	EventCall.connect("finished_stats", _sales_score_calcalulations)
 
 func _get_buyer_demographics():
 	match preferred_demographic:
@@ -134,9 +134,9 @@ func _sales_score_calcalulations(stats: StatsCalculation):
 	sales_score += (stats.weight/ weight_max) * (1-(weight_importance/100))
 	sales_score += (stats.transport_speed/ transport_speed_max) * (1+(transport_speed_importance/100))
 	sales_score += (stats.maneuverability/ maneuverability_max) * (1+(maneuverability_importance/100))
-	sales_score += (stats.shielding/ shielding_max) * (1+(shield_importance/100))
+	sales_score += (stats.shielding/ sheilding_max) * (1+(shield_importance/100))
 	sales_score += (stats.fuel/ fuel_max) * (1+(fuel_importance/100))
-	EventCall.emit_signal("send_score", sales_score)
+	EventCall.emit_signal("score_gather", sales_score)
 	_sales_calculation(sales_score)
 	
 func demographics_distribution():

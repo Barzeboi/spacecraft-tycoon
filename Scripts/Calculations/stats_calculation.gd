@@ -21,7 +21,7 @@ var accum_comfort: float
 var comfort: float
 var attack: float
 var defense: float
-var sheilding: float
+var shielding: float
 var fuel: int
 
 
@@ -35,6 +35,7 @@ var com_count: int
 
 func _ready() -> void:
 	EventCall.connect('stats_call', _stats_addition)
+	EventCall.connect("finished_stats_call", _finished_stats)
 	
 func _stats_addition(stats:ComponentStats):
 	base_weight += stats.weight
@@ -47,7 +48,7 @@ func _stats_addition(stats:ComponentStats):
 	accum_comfort += stats.comfort
 	attack += stats.attack
 	defense += stats.defense
-	sheilding += stats.defense
+	shielding += stats.defense
 	fuel += stats.fuel
 	
 	if stats.efficiency > 0.0:
@@ -77,3 +78,6 @@ func _stats_modifiers():
 	print("transport_speed: " + str(transport_speed))
 	
 	EventCall.emit_signal("stats_changed", self)
+	
+func _finished_stats():
+	EventCall.emit_signal("finished_stats", self)
