@@ -24,8 +24,6 @@ var defense: float
 var shielding: float
 var fuel: int
 
-
-
 var previous_stats: Array[Variant]
 
 var count: int

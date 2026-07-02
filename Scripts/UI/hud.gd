@@ -4,6 +4,7 @@ extends CanvasLayer
 signal send_to_sales(stats)
 
 
+var stats: StatsCalculation = StatsCalculation.new()
 var selected_component: Dictionary = {"none": 0, "cockpit_1": 1, "cargo_1": 2, "fuel_1": 3, "rocket_1": 4}
 var current_component: int
 var placer
@@ -42,7 +43,6 @@ var current_time_string: String = "%s/%s"
 func _ready() -> void:
 	EventCall.connect("pressed", _component_button_pressed) # <----- component buttons
 	EventCall.connect("placement",_place_component) # <----- attach_script
-	EventCall.connect("stats_changed",_stats_display) # <----- Stats_Calculation
 	WorldState.connect("tick", _tick)
 	credits = 100000
 	money.text = "Money" + str(credits)
@@ -85,6 +85,8 @@ func _unhandled_input(event: InputEvent) -> void:
 			if event.button_index == MOUSE_BUTTON_LEFT and event.is_pressed():
 				if placer_active and is_placeable == true:
 					_place_component(component_instance,is_placeable, placing_position)
+				else:
+					print("error")
 					
 func _tick():
 	$BottomUIBar/HBoxContainer/VBoxContainer/CurrentTime.text = current_time_string % ["%0*d" % [2, WorldState.month], WorldState.year]
@@ -106,7 +108,6 @@ func _place_component(comp_inst:PackedScene,plce: bool, position: Vector2):
 	if is_instance_valid(comp_inst) and is_placeable == true:
 		var place = comp_inst.instantiate()
 		place.global_position = position
-		EventCall.clear_call.emit()
 		owner.add_child(place)
 		_finances_changed(component_cost)
 		
@@ -145,11 +146,9 @@ func _on_build_button_pressed() -> void:
 	WorldState.time_speed = 0
 
 func _on_done_button_pressed() -> void:
-	var stats: StatsCalculation
 	EventCall.finished_stats_call.emit()
 	$DonePanel.show()
 
 func _on_stm_button_pressed() -> void:
-	EventCall.emit_signal("info_gather", ship_name, price)
 	await EventCall.array_finished
 	$DonePanel.hide()

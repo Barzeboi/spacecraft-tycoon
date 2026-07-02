@@ -1,4 +1,4 @@
-extends WorldState
+extends Node
 class_name SalesCalculation
 
 enum BuyerDemographics
@@ -42,7 +42,7 @@ var price: int
 var sales_amount
 
 func _ready() -> void:
-	EventCall.connect("finished_stats", _sales_score_calcalulations)
+	pass
 
 func _get_buyer_demographics():
 	match preferred_demographic:
